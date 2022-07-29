@@ -1,5 +1,5 @@
 ---
-title: "katie-frank.github.io"
+title: "Katie Frank"
 listing:
   contents: posts
   sort: "date desc"
