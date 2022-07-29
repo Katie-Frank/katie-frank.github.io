@@ -2,18 +2,31 @@
 title: "About"
 image: profile.jpg
 about:
-  template: jolla
+  template: trestles
   links:
+    - text: GitHub
+      icon: github
+      url: https://github.com/katie-frank
     - icon: twitter
       text: Twitter
-      href: https://twitter.com
+      href: https://twitter.com/katiexfrank
     - icon: linkedin
       text: LinkedIn
-      href: https://linkedin.com
-    - icon: github
-      text: Github
-      href: https://github.com
-
+      href: https://www.linkedin.com/in/katie-frank-28843218a
+    - text: Blog
+      url: https://katie-frank.github.io
 ---
 
-About this blog
+## Bio
+
+I'm a data and R enthusiast based in Dallas, TX. I currently work as a biostatistical analyst for a healthcare organization where I use R and statistics to address research topics in medicine.
+
+## Education
+
+**Baylor University** \| Waco, TX
+
+M.S. in Statistical Science \| December 2018
+
+**Southwestern College** \| Winfield, KS
+
+B.S. in Biology \| December 2016

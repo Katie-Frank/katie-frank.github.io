@@ -1,5 +1,4 @@
 ---
-title: "Katie Frank"
 listing:
   contents: posts
   sort: "date desc"
