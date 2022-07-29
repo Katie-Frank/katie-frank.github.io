@@ -19,7 +19,7 @@ about:
 
 ## Bio
 
-I'm a data and R enthusiast based in Dallas, TX. I currently work as a biostatistical analyst for a healthcare organization where I use R and statistics to address research topics in medicine.
+I'm a data and R enthusiast based in Dallas, TX. I currently work as a biostatistical analyst for a healthcare organization where I use R and statistics to address research topics in medicine. Outside of work, I enjoy running and watching soccer matches as well as track & field meets.
 
 ## Education
 
