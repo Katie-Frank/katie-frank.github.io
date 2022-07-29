@@ -25,6 +25,13 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this blog"
+    "text": "I’m a data and R enthusiast based in Dallas, TX. I currently work as a biostatistical analyst for a healthcare organization where I use R and statistics to address research topics in medicine."
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "About",
+    "section": "Education",
+    "text": "Education\nBaylor University | Waco, TX\nM.S. in Statistical Science | December 2018\nSouthwestern College | Winfield, KS\nB.S. in Biology | December 2016"
   }
 ]
