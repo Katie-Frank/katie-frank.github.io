@@ -3,6 +3,7 @@
     "listing": "/index.html",
     "items": [
       "/posts/post-with-code/index.html",
+      "/posts/2022-07-29-an-R-package-for-calculating-scores-and-marks-for-combined-events/index.html",
       "/posts/welcome/index.html"
     ]
   }
