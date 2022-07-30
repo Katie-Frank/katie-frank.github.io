@@ -1,0 +1,201 @@
+---
+title: "combinedevents: an R package for calculating scores and marks for combined events in track and field"
+description: |
+  Introduction to the R package and the competitions
+author: "Katie Frank"
+date: "07-29-2022"
+editor: visual
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: true
+---
+
+With the exciting wrap-up of the [2022 World Athletics Championships](https://worldathletics.org/competitions/world-athletics-championships/oregon22)[^1] in Eugene, Oregon, this July, I thought it would be a good time to release this long-awaited (by me) blog post. This is my first post- I don't know how regularly I'll update here, but this blog should be a good place to keep track of any fun or interesting projects I work on.
+
+[^1]: Outside of the Olympics, the World Athletics Championships are the most well-known athletics competitions. They are typically held every two years. There is also an indoor version of the event held every two years.
+
+In September of 2020, I submitted my first R package `combinedevents` to [CRAN](https://cran.r-project.org)[^2]. In this post, I am going to demonstrate how the package works and touch on the finer details of the package (like a vignette would), but first I'll introduce what combined events are in track and field.
+
+[^2]: The latest version (version 0.1.1) was released on 02/03/2021. It contains several very minor updates to the originally released package.
+
+## What are combined events?
+
+Combined events (or multi-events) are competitions in which athletes compete in multiple track and field events encompassing running, jumping, and throwing. Athletes earn points for their performance in each event, and at the end of the competition the summed points across all events gives the total score. The winner is the athlete with the highest point total.
+
+Track and field competitions are held both outdoors and indoors. In indoor track and field, the track is typically 200 meters, half the size of a standard outdoor track, and many of the contested events differ from those held outdoors. The most common *outdoor* combined events are the men's decathlon and the women's heptathlon, while the most common *indoor* combined events are the men's heptathlon and women's pentathlon. Each of these combined events are detailed in the tables below.
+
+### Outdoor combined events
+
+#### Men's decathlon
+
+The men's decathlon consists of 10 events competed over 2 days in the following order
+
+```{r}
+#| echo: false
+
+library(gt)
+
+data.frame(first_day = c("100 meters", "Long jump", "Shot put", "High jump", "400 meters"),
+
+           second_day = c("110 meters hurdles", "Discus throw", "Pole vault", 
+
+                       "Javelin throw", "1500 meters")) %>% 
+
+    gt() %>% 
+
+    cols_width(
+
+        colums = c(first_day, second_day) ~ px(175)
+
+    ) %>%
+
+    cols_label(
+
+        first_day = md("**Day 1**"),
+
+        second_day = md("**Day 2**")
+
+        ) %>% 
+
+    tab_header(md("**Decathlon events**")) %>% 
+
+    opt_align_table_header("left")
+```
+
+#### Women's heptathlon
+
+The women's heptathlon consists of 7 events competed over 2 days in the following order
+
+```{r}
+#| echo: false
+
+data.frame(first_day = c("100 meters hurdles", "High jump", "Shot put", "200 meters"),
+           second_day = c("Long jump", "Javelin throw", "800 meters", "")) %>% 
+    gt() %>% 
+    cols_width(
+        c(first_day, second_day) ~ px(175)
+    ) %>%
+    cols_label(
+        first_day = md("**Day 1**"),
+        second_day = md("**Day 2**")
+        ) %>% 
+    tab_header(md("**Heptathlon events**")) %>% 
+    opt_align_table_header("left")
+```
+
+### Indoor combined events
+
+#### Men's heptathlon
+
+The men's heptathlon consists of 7 events over 2 days in the following order
+
+```{r}
+#| echo: false
+
+data.frame(first_day = c("60 meters", "Long jump", "Shot put", "High jump"),
+           second_day = c("60 meters hurdles", "Pole vault", "1000 meters", "")) %>% 
+    gt() %>% 
+    cols_width(
+        c(first_day, second_day) ~ px(175)
+    ) %>%
+    cols_label(
+        first_day = md("**Day 1**"),
+        second_day = md("**Day 2**")
+        ) %>% 
+    tab_header(md("**Heptathlon events**")) %>% 
+    opt_align_table_header("left")
+```
+
+#### Women's pentathlon
+
+The women's pentathlon is a one-day competition consisting of 5 events in the following order
+
+```{r}
+#| echo: false
+
+data.frame(event = c("60 meters hurdles", "High jump", "Shot put", "Long jump",
+                     "800 meters"),
+           blah = rep("", 5)) %>% 
+    gt() %>% 
+    cols_width(
+        c(event, blah) ~ px(175)
+    ) %>% 
+    tab_header(md("**Pentathlon events**")) %>% 
+    opt_align_table_header("left") %>% 
+    tab_options(
+        column_labels.hidden = TRUE
+    )
+```
+
+## How are combined events scored?
+
+The number of points athletes earn in each event is based on a set of scoring tables created by the International Association of Athletics Federation (IAAF), now known as World Athletics[^3].
+
+[^3]: World Athletics is the international governing body of track and field along with several other athletics sports.
+
+These scoring tables are progressive, which means that
+
+1.  Accomplishing more difficult feats will earn you more points.
+2.  Equal improvements in performance (e.g., a half-second improvement in 100m time) are not rewarded equally. To elaborate further with the 100m example, even though going from 11.5 to 11 seconds has the same half-second improvement as going from 11 to 10.5 seconds, the increase in points scored for the latter is greater because the latter performance is more difficult for sprinters to achieve. Essentially, the scoring tables reflect the fact that it's harder to make performance gains as you approach the limits of human performance.
+
+## Introduction to the package
+
+To get started with `combinedevents`, first install the package if you haven't already, and then load the package.
+
+```{r}
+# install.packages("combinedevents")
+library(combinedevents)
+```
+
+The two main functions in `combinedevents` are `scores()` and `marks()`. The package also includes the data frame `dec`, which contains the performances of 23 decathletes at the 2016 Summer Olympics.
+
+### Using `scores()`
+
+The `scores()` function calculates scores for combined events competitions. As an example, let's calculate the points for decathlon champion Ashton Eaton at the [2016 Summer Olympics](https://en.wikipedia.org/wiki/Athletics_at_the_2016_Summer_Olympics_–_Men%27s_decathlon).
+
+```{r}
+scores(
+  marks = c(`100m` = 10.46, LJ = 7.94, SP = 14.73, HJ = 2.01, 
+            `400m` = 46.07, `110mH` = 13.8, DT = 45.49, PV = 5.2, 
+            JT = 59.77, `1500m` = "4:23.33"),
+  gender = "male", 
+  combined_event = "decathlon"
+  )
+```
+
+Note: as long as the `combined_event` argument isn't `NULL`, you don't have to supply the names of the individual events to the `marks` argument in `scores()`:
+
+```{r}
+#| eval: false
+
+# Not run
+scores(
+  marks = c(10.46, 7.94, 14.73, 2.01, 46.07, 
+            13.8, 45.49, 5.2, 59.77, "4:23.33"),
+  gender = "male", 
+  combined_event = "decathlon"
+  )
+```
+
+<br>
+
+<center>
+
+<a id='74KRftYNQ2J7P9KIB3dqgw' class='gie-single' href='http://www.gettyimages.com/detail/591467078' target='_blank' style='color:#a7a7a7;text-decoration:none;font-weight:normal !important;border:none;display:inline-block;'>Embed from Getty Images
+
+</a>
+
+```{=html}
+<script>window.gie=window.gie||function(c){(gie.q=gie.q||[]).push(c)};gie(function(){gie.widgets.load({id:'74KRftYNQ2J7P9KlB3dqgw',sig:'ub_2FiHMUragBlc39D_F2chDiSx465lGwra8rNkJXyU=',w:'594px',h:'396px',items:'591467078',caption: true ,tld:'com',is360: false })});</script>
+```
+```{=html}
+<script src='//embed-cdn.gettyimages.com/widgets.js' charset='utf-8' async></script>
+```
+<caption>Ashton Eaton long jumping at the 2016 Summer Olympics.</caption>
+
+</center>
+
+</br>
+
+Going to add the rest soon...

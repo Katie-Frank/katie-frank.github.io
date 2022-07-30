@@ -1,0 +1,14 @@
+{
+  "hash": "db7124a763e6f650f6ace225d1d73b2f",
+  "result": {
+    "markdown": "---\ntitle: \"Introduction to combinedevents\"\nauthor: \"Katie Frank\"\ndate: \"07-29-2022\"\neditor: visual\n---\n\n\n\n\nWith\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
