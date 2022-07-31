@@ -4,11 +4,16 @@ description: |
   Introduction to the R package and the competitions
 author: "Katie Frank"
 date: "07-29-2022"
+categories: [R, track and field, combined events]
+image: "outdoor_t&f.jpg"
 editor: visual
+format:
+  html:
+    toc: true
+    toc-location: left
 output:
   distill::distill_article:
     self_contained: false
-    toc: true
 ---
 
 With the exciting wrap-up of the [2022 World Athletics Championships](https://worldathletics.org/competitions/world-athletics-championships/oregon22)[^1] in Eugene, Oregon, this July, I thought it would be a good time to release this long-awaited (by me) blog post. This is my first post- I don't know how regularly I'll update here, but this blog should be a good place to keep track of any fun or interesting projects I work on.
@@ -152,7 +157,7 @@ The two main functions in `combinedevents` are `scores()` and `marks()`. The pac
 
 ### Using `scores()`
 
-The `scores()` function calculates scores for combined events competitions. As an example, let's calculate the points for decathlon champion Ashton Eaton at the [2016 Summer Olympics](https://en.wikipedia.org/wiki/Athletics_at_the_2016_Summer_Olympics_–_Men%27s_decathlon).
+The `scores()` function calculates scores for combined events competitions. As an example, let's calculate the points for decathlon champion Ashton Eaton at the [2016 Summer Olympics](https://en.wikipedia.org/wiki/Athletics_at_the_2016_Summer_Olympics_–_Men%27s_decathlon):
 
 ```{r}
 scores(
@@ -178,24 +183,86 @@ scores(
   )
 ```
 
-<br>
-
 <center>
 
-<a id='74KRftYNQ2J7P9KIB3dqgw' class='gie-single' href='http://www.gettyimages.com/detail/591467078' target='_blank' style='color:#a7a7a7;text-decoration:none;font-weight:normal !important;border:none;display:inline-block;'>Embed from Getty Images
+::: {#fig-ashton_eaton_rio2016}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TAVI2WA5Gn0">
 
-</a>
+</iframe>
 
-```{=html}
-<script>window.gie=window.gie||function(c){(gie.q=gie.q||[]).push(c)};gie(function(){gie.widgets.load({id:'74KRftYNQ2J7P9KlB3dqgw',sig:'ub_2FiHMUragBlc39D_F2chDiSx465lGwra8rNkJXyU=',w:'594px',h:'396px',items:'591467078',caption: true ,tld:'com',is360: false })});</script>
-```
-```{=html}
-<script src='//embed-cdn.gettyimages.com/widgets.js' charset='utf-8' async></script>
-```
-<caption>Ashton Eaton long jumping at the 2016 Summer Olympics.</caption>
+Ashton Eaton at the 2016 Summer Olympics.
+:::
 
 </center>
 
-</br>
+Another features of `scores()` is that it allows you to calculate the points for as many individual events as you want without having to specify a particular combined event.
 
-Going to add the rest soon...
+```{r}
+scores(
+  marks = c(LJ = 7, LJ = 7.01, LJ = 7.02,
+            `400m` = 50, `400m` = 49.5, `400m` = 49),
+  gender = "male"
+  )
+```
+
+### Using `marks()`
+
+The `marks()` function calculates marks for track and field combined events competitions. This function performs the opposite action of `scores()`: you give it the scores you want to obtain, and it gives you the marks you need to achieve those scores. To see its usefulness, let's first consider the performance of heptathlon champion Katarina Johnson-Thompson at the [2019 World Athletics Championships](https://en.wikipedia.org/wiki/2019_World_Athletics_Championships_–_Women%27s_heptathlon):
+
+```{r}
+(hep_example <- scores(
+  marks = c(`100mH` = 13.09, HJ = 1.95, SP = 13.86,
+            `200m` = 23.08, LJ = 6.77, JT = 43.93, `800m` = "2:07.26"),
+  gender = "female", 
+  combined_event = "heptathlon"
+  ))
+```
+
+The vector of scores for the events comprising the heptathlon can be easily extracted from the object `hep_example`.
+
+```{r}
+(hep_scores <- hep_example$scores)
+```
+
+Now, let's see the values of the marks returned when we supply `hep_scores` to `marks()`.
+
+```{r}
+marks(scores = hep_scores, gender = "female", combined_event = "heptathlon")
+```
+
+Notice that the marks for the first five events are the same as those in `hep_example` but are different for `JT` and `800m`. In particular, the mark returned for `JT` is 1cm shorter than her actual mark and for `800m` is 40 milliseconds (or 0.04 of a second) slower than her actual mark. This is a result of how the `marks()` function was written: for track events, the function returns the slowest time needed to achieve the input score. Similarly, for jumping and throwing events, `marks()` returns the shortest distance necessary to achieve the input score.
+
+<center>
+
+::: {#fig-kjt_doha2019}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0wHgZOERDbs">
+
+</iframe>
+
+Katarina Johnson-Thompson at the 2019 World Athletics Championships.
+:::
+
+</center>
+
+#### A couple of asides about `marks()`
+
+While `marks()` acts as the natural opposite of `scores()`, the function is **NOT** the inverse of `scores()` because, as we just saw, you can have two different marks mapped to the same score.
+
+For some events, when a score is given to `marks()`, the score returned may be different from the one input because some scores are not actually possible. This behavior stems from the fact that track and field measurements are only *so granular*- the finest units of measurement are milliseconds for track events and centimeters for jumping and throwing events. Thus, when an impossible score is given to `marks()`, the function will return the closest higher score that corresponds to a mark. To get a better idea of what I mean, let's calculate the scores for two high jump marks: one of 2m (or about 6$^{\prime}$ 6.75$^{\prime\prime}$) and the other 2.01m (roughly 6$^{\prime}$ 7$^{\prime\prime}$).
+
+```{r}
+scores(c(HJ = 2, HJ = 2.01), "male")
+```
+
+From the output, we see that scores of $\{804, 805, \dots, 812\}$ are not possible for the men's high jump event. So, when we give `marks()` those scores, only scores of 813 are returned.
+
+```{r}
+HJ_scores <- 804:812
+names(HJ_scores) <- rep("HJ", length(HJ_scores))
+
+marks(HJ_scores, "male")
+```
+
+## Final thoughts
+
+I hope this post provided a solid introduction to both `combinedevents`, the package, and *combined events*, the competitions. For more information on the package, I recommend checking out its documentation (i.e., run `help(package = "combinedevents")`). Lastly, while I briefly touched on how combined events are scored, I'd like to take a more in-depth look at this topic in a future post. Thanks for reading!

@@ -14,69 +14,6 @@
     "text": "Since this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Katie Frank",
-    "section": "",
-    "text": "news\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nJul 29, 2022\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIntroduction to the R package and the competitions\n\n\n\n\n\n\nJul 29, 2022\n\n\nKatie Frank\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nJul 26, 2022\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "I’m a data and R enthusiast based in Dallas, TX. I currently work as a biostatistical analyst for a healthcare organization where I use R and statistics to address research topics in medicine. Outside of work, I enjoy running and watching soccer matches as well as track & field meets."
-  },
-  {
-    "objectID": "about.html#education",
-    "href": "about.html#education",
-    "title": "About",
-    "section": "Education",
-    "text": "Education\nBaylor University | Waco, TX\nM.S. in Statistical Science | December 2018\nSouthwestern College | Winfield, KS\nB.S. in Biology | December 2016"
-  },
-  {
-    "objectID": "posts/2022-07-29-intro-to-combinedevents-package/index.html",
-    "href": "posts/2022-07-29-intro-to-combinedevents-package/index.html",
-    "title": "Introduction to combinedevents",
-    "section": "",
-    "text": "With"
-  },
-  {
-    "objectID": "posts/2022-07-29-intro-to-combinedevents/Untitled.html",
-    "href": "posts/2022-07-29-intro-to-combinedevents/Untitled.html",
-    "title": "Introduction to combinedevents",
-    "section": "",
-    "text": "This is a post."
-  },
-  {
-    "objectID": "posts/2022-07-29-intro-to-combinedevents/index.html",
-    "href": "posts/2022-07-29-intro-to-combinedevents/index.html",
-    "title": "combinedevents: an R package for calculating scores and marks for combined events in track and field",
-    "section": "",
-    "text": "With the exciting wrap-up of the 2022 World Athletics Championships1 in Eugene, Oregon, this July, I thought it would be a good time to release this long-awaited (by me) blog post. This is my first post- I don’t know how regularly I’ll update here, but this blog should be a good place to keep track of any fun or interesting projects I work on.\nIn September of 2020, I submitted my first R package combinedevents to CRAN2. In this post, I am going to demonstrate how the package works and touch on the finer details of the package (like a vignette would), but first I’ll introduce what combined events are in track and field."
-  },
-  {
-    "objectID": "posts/2022-07-29-intro-to-combinedevents/index.html#what-are-combined-events",
-    "href": "posts/2022-07-29-intro-to-combinedevents/index.html#what-are-combined-events",
-    "title": "combinedevents: an R package for calculating scores and marks for combined events in track and field",
-    "section": "What are combined events?",
-    "text": "What are combined events?\nCombined events (or multi-events) are competitions in which athletes compete in multiple track and field events encompassing running, jumping, and throwing. Athletes earn points for their performance in each event, and at the end of the competition the summed points across all events gives the total score. The winner is the athlete with the highest point total.\nTrack and field competitions are held both outdoors and indoors. In indoor track and field, the track is typically 200 meters, half the size of a standard outdoor track, and many of the contested events differ from those held outdoors. The most common outdoor combined events are the men’s decathlon and the women’s heptathlon, while the most common indoor combined events are the men’s heptathlon and women’s pentathlon. Each of these combined events are detailed in the tables below.\n\nOutdoor combined events\n\nMen’s decathlon\nThe men’s decathlon consists of 10 events competed over 2 days in the following order\n\n\n\n\n\n\n  \n    \n    \n  \n  \n    \n      Decathlon events\n    \n    \n  \n  \n    \n      Day 1\n      Day 2\n    \n  \n  \n    100 meters\n110 meters hurdles\n    Long jump\nDiscus throw\n    Shot put\nPole vault\n    High jump\nJavelin throw\n    400 meters\n1500 meters\n  \n  \n  \n\n\n\n\n\n\nWomen’s heptathlon\nThe women’s heptathlon consists of 7 events competed over 2 days in the following order\n\n\n\n\n\n\n  \n    \n    \n  \n  \n    \n      Heptathlon events\n    \n    \n  \n  \n    \n      Day 1\n      Day 2\n    \n  \n  \n    100 meters hurdles\nLong jump\n    High jump\nJavelin throw\n    Shot put\n800 meters\n    200 meters\n\n  \n  \n  \n\n\n\n\n\n\n\nIndoor combined events\n\nMen’s heptathlon\nThe men’s heptathlon consists of 7 events over 2 days in the following order\n\n\n\n\n\n\n  \n    \n    \n  \n  \n    \n      Heptathlon events\n    \n    \n  \n  \n    \n      Day 1\n      Day 2\n    \n  \n  \n    60 meters\n60 meters hurdles\n    Long jump\nPole vault\n    Shot put\n1000 meters\n    High jump\n\n  \n  \n  \n\n\n\n\n\n\nWomen’s pentathlon\nThe women’s pentathlon is a one-day competition consisting of 5 events in the following order\n\n\n\n\n\n\n  \n    \n    \n  \n  \n    \n      Pentathlon events\n    \n    \n  \n  \n  \n    60 meters hurdles\n\n    High jump\n\n    Shot put\n\n    Long jump\n\n    800 meters"
-  },
-  {
-    "objectID": "posts/2022-07-29-intro-to-combinedevents/index.html#how-are-combined-events-scored",
-    "href": "posts/2022-07-29-intro-to-combinedevents/index.html#how-are-combined-events-scored",
-    "title": "combinedevents: an R package for calculating scores and marks for combined events in track and field",
-    "section": "How are combined events scored?",
-    "text": "How are combined events scored?\nThe number of points athletes earn in each event is based on a set of scoring tables created by the International Association of Athletics Federation (IAAF), now known as World Athletics3.\nThese scoring tables are progressive, which means that\n\nAccomplishing more difficult feats will earn you more points.\nEqual improvements in performance (e.g., a half-second improvement in 100m time) are not rewarded equally. To elaborate further with the 100m example, even though going from 11.5 to 11 seconds has the same half-second improvement as going from 11 to 10.5 seconds, the increase in points scored for the latter is greater because the latter performance is more difficult for sprinters to achieve. Essentially, the scoring tables reflect the fact that it’s harder to make performance gains as you approach the limits of human performance."
-  },
-  {
-    "objectID": "posts/2022-07-29-intro-to-combinedevents/index.html#introduction-to-the-package",
-    "href": "posts/2022-07-29-intro-to-combinedevents/index.html#introduction-to-the-package",
-    "title": "combinedevents: an R package for calculating scores and marks for combined events in track and field",
-    "section": "Introduction to the package",
-    "text": "Introduction to the package\nTo get started with combinedevents, first install the package if you haven’t already, and then load the package.\n\n# install.packages(\"combinedevents\")\nlibrary(combinedevents)\n\nThe two main functions in combinedevents are scores() and marks(). The package also includes the data frame dec, which contains the performances of 23 decathletes at the 2016 Summer Olympics.\n\nUsing scores()\nThe scores() function calculates scores for combined events competitions. As an example, let’s calculate the points for decathlon champion Ashton Eaton at the 2016 Summer Olympics.\n\nscores(\n  marks = c(`100m` = 10.46, LJ = 7.94, SP = 14.73, HJ = 2.01, \n            `400m` = 46.07, `110mH` = 13.8, DT = 45.49, PV = 5.2, \n            JT = 59.77, `1500m` = \"4:23.33\"),\n  gender = \"male\", \n  combined_event = \"decathlon\"\n  )\n\n   decathlon    mark score\n1       100m   10.46   985\n2         LJ    7.94  1045\n3         SP   14.73   773\n4         HJ    2.01   813\n5       400m   46.07  1005\n6      110mH    13.8  1000\n7         DT   45.49   777\n8         PV     5.2   972\n9         JT   59.77   734\n10     1500m 4:23.33   789\n11     TOTAL    <NA>  8893\n\n\nNote: as long as the combined_event argument isn’t NULL, you don’t have to supply the names of the individual events to the marks argument in scores():\n\n# Not run\nscores(\n  marks = c(10.46, 7.94, 14.73, 2.01, 46.07, \n            13.8, 45.49, 5.2, 59.77, \"4:23.33\"),\n  gender = \"male\", \n  combined_event = \"decathlon\"\n  )\n\n\n\nEmbed from Getty Images\n\n\n\n\nAshton Eaton long jumping at the 2016 Summer Olympics."
-  },
-  {
     "objectID": "posts/2022-07-29-an-R-package-for-calculating-scores-and-marks-for-combined-events/index.html",
     "href": "posts/2022-07-29-an-R-package-for-calculating-scores-and-marks-for-combined-events/index.html",
     "title": "combinedevents: an R package for calculating scores and marks for combined events in track and field",
@@ -102,6 +39,41 @@
     "href": "posts/2022-07-29-an-R-package-for-calculating-scores-and-marks-for-combined-events/index.html#introduction-to-the-package",
     "title": "combinedevents: an R package for calculating scores and marks for combined events in track and field",
     "section": "Introduction to the package",
-    "text": "Introduction to the package\nTo get started with combinedevents, first install the package if you haven’t already, and then load the package.\n\n# install.packages(\"combinedevents\")\nlibrary(combinedevents)\n\nThe two main functions in combinedevents are scores() and marks(). The package also includes the data frame dec, which contains the performances of 23 decathletes at the 2016 Summer Olympics.\n\nUsing scores()\nThe scores() function calculates scores for combined events competitions. As an example, let’s calculate the points for decathlon champion Ashton Eaton at the 2016 Summer Olympics.\n\nscores(\n  marks = c(`100m` = 10.46, LJ = 7.94, SP = 14.73, HJ = 2.01, \n            `400m` = 46.07, `110mH` = 13.8, DT = 45.49, PV = 5.2, \n            JT = 59.77, `1500m` = \"4:23.33\"),\n  gender = \"male\", \n  combined_event = \"decathlon\"\n  )\n\n   decathlon    mark score\n1       100m   10.46   985\n2         LJ    7.94  1045\n3         SP   14.73   773\n4         HJ    2.01   813\n5       400m   46.07  1005\n6      110mH    13.8  1000\n7         DT   45.49   777\n8         PV     5.2   972\n9         JT   59.77   734\n10     1500m 4:23.33   789\n11     TOTAL    <NA>  8893\n\n\nNote: as long as the combined_event argument isn’t NULL, you don’t have to supply the names of the individual events to the marks argument in scores():\n\n# Not run\nscores(\n  marks = c(10.46, 7.94, 14.73, 2.01, 46.07, \n            13.8, 45.49, 5.2, 59.77, \"4:23.33\"),\n  gender = \"male\", \n  combined_event = \"decathlon\"\n  )\n\n\n\nEmbed from Getty Images\n\n\n\n\nAshton Eaton long jumping at the 2016 Summer Olympics.\n\n\n\nGoing to add the rest soon…"
+    "text": "Introduction to the package\nTo get started with combinedevents, first install the package if you haven’t already, and then load the package.\n\n# install.packages(\"combinedevents\")\nlibrary(combinedevents)\n\nThe two main functions in combinedevents are scores() and marks(). The package also includes the data frame dec, which contains the performances of 23 decathletes at the 2016 Summer Olympics.\n\nUsing scores()\nThe scores() function calculates scores for combined events competitions. As an example, let’s calculate the points for decathlon champion Ashton Eaton at the 2016 Summer Olympics:\n\nscores(\n  marks = c(`100m` = 10.46, LJ = 7.94, SP = 14.73, HJ = 2.01, \n            `400m` = 46.07, `110mH` = 13.8, DT = 45.49, PV = 5.2, \n            JT = 59.77, `1500m` = \"4:23.33\"),\n  gender = \"male\", \n  combined_event = \"decathlon\"\n  )\n\n   decathlon    mark score\n1       100m   10.46   985\n2         LJ    7.94  1045\n3         SP   14.73   773\n4         HJ    2.01   813\n5       400m   46.07  1005\n6      110mH    13.8  1000\n7         DT   45.49   777\n8         PV     5.2   972\n9         JT   59.77   734\n10     1500m 4:23.33   789\n11     TOTAL    <NA>  8893\n\n\nNote: as long as the combined_event argument isn’t NULL, you don’t have to supply the names of the individual events to the marks argument in scores():\n\n# Not run\nscores(\n  marks = c(10.46, 7.94, 14.73, 2.01, 46.07, \n            13.8, 45.49, 5.2, 59.77, \"4:23.33\"),\n  gender = \"male\", \n  combined_event = \"decathlon\"\n  )\n\n\n\n\n\n\nFigure 1: Ashton Eaton at the 2016 Summer Olympics.\n\n\n\nAnother features of scores() is that it allows you to calculate the points for as many individual events as you want without having to specify a particular combined event.\n\nscores(\n  marks = c(LJ = 7, LJ = 7.01, LJ = 7.02,\n            `400m` = 50, `400m` = 49.5, `400m` = 49),\n  gender = \"male\"\n  )\n\n  event  mark score\n1    LJ  7.00   814\n2    LJ  7.01   816\n3    LJ  7.02   818\n4  400m 50.00   815\n5  400m 49.50   838\n6  400m 49.00   861\n\n\n\n\nUsing marks()\nThe marks() function calculates marks for track and field combined events competitions. This function performs the opposite action of scores(): you give it the scores you want to obtain, and it gives you the marks you need to achieve those scores. To see its usefulness, let’s first consider the performance of heptathlon champion Katarina Johnson-Thompson at the 2019 World Athletics Championships:\n\n(hep_example <- scores(\n  marks = c(`100mH` = 13.09, HJ = 1.95, SP = 13.86,\n            `200m` = 23.08, LJ = 6.77, JT = 43.93, `800m` = \"2:07.26\"),\n  gender = \"female\", \n  combined_event = \"heptathlon\"\n  ))\n\n  heptathlon    mark score\n1      100mH   13.09  1111\n2         HJ    1.95  1171\n3         SP   13.86   785\n4       200m   23.08  1071\n5         LJ    6.77  1095\n6         JT   43.93   743\n7       800m 2:07.26  1005\n8      TOTAL    <NA>  6981\n\n\nThe vector of scores for the events comprising the heptathlon can be easily extracted from the object hep_example.\n\n(hep_scores <- hep_example$scores)\n\n100mH    HJ    SP  200m    LJ    JT  800m \n 1111  1171   785  1071  1095   743  1005 \n\n\nNow, let’s see the values of the marks returned when we supply hep_scores to marks().\n\nmarks(scores = hep_scores, gender = \"female\", combined_event = \"heptathlon\")\n\n  heptathlon    mark score\n1      100mH   13.09  1111\n2         HJ    1.95  1171\n3         SP   13.86   785\n4       200m   23.08  1071\n5         LJ    6.77  1095\n6         JT   43.92   743\n7       800m 2:07.30  1005\n8      TOTAL    <NA>  6981\n\n\nNotice that the marks for the first five events are the same as those in hep_example but are different for JT and 800m. In particular, the mark returned for JT is 1cm shorter than her actual mark and for 800m is 40 milliseconds (or 0.04 of a second) slower than her actual mark. This is a result of how the marks() function was written: for track events, the function returns the slowest time needed to achieve the input score. Similarly, for jumping and throwing events, marks() returns the shortest distance necessary to achieve the input score.\n\n\n\n\n\nFigure 2: Katarina Johnson-Thompson at the 2019 World Athletics Championships.\n\n\n\n\nA couple of asides about marks()\nWhile marks() acts as the natural opposite of scores(), the function is NOT the inverse of scores() because, as we just saw, you can have two different marks mapped to the same score.\nFor some events, when a score is given to marks(), the score returned may be different from the one input because some scores are not actually possible. This behavior stems from the fact that track and field measurements are only so granular- the finest units of measurement are milliseconds for track events and centimeters for jumping and throwing events. Thus, when an impossible score is given to marks(), the function will return the closest higher score that corresponds to a mark. To get a better idea of what I mean, let’s calculate the scores for two high jump marks: one of 2m (or about 6\\(^{\\prime}\\) 6.75\\(^{\\prime\\prime}\\)) and the other 2.01m (roughly 6\\(^{\\prime}\\) 7\\(^{\\prime\\prime}\\)).\n\nscores(c(HJ = 2, HJ = 2.01), \"male\")\n\n  event mark score\n1    HJ 2.00   803\n2    HJ 2.01   813\n\n\nFrom the output, we see that scores of \\(\\{804, 805, \\dots, 812\\}\\) are not possible for the men’s high jump event. So, when we give marks() those scores, only scores of 813 are returned.\n\nHJ_scores <- 804:812\nnames(HJ_scores) <- rep(\"HJ\", length(HJ_scores))\n\nmarks(HJ_scores, \"male\")\n\n  event mark score\n1    HJ 2.01   813\n2    HJ 2.01   813\n3    HJ 2.01   813\n4    HJ 2.01   813\n5    HJ 2.01   813\n6    HJ 2.01   813\n7    HJ 2.01   813\n8    HJ 2.01   813\n9    HJ 2.01   813"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Katie Frank",
+    "section": "",
+    "text": "news\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nJul 29, 2022\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\ntrack and field\n\n\ncombined events\n\n\n\n\nIntroduction to the R package and the competitions\n\n\n\n\n\n\nJul 29, 2022\n\n\nKatie Frank\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nJul 26, 2022\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "I’m a data and R enthusiast based in Dallas, TX. I currently work as a biostatistical analyst for a healthcare organization where I use R and statistics to address research topics in medicine. Outside of work, I enjoy running and watching soccer matches as well as track & field meets."
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "About",
+    "section": "Education",
+    "text": "Education\nBaylor University | Waco, TX\nM.S. in Statistical Science | December 2018\nSouthwestern College | Winfield, KS\nB.S. in Biology | December 2016"
+  },
+  {
+    "objectID": "posts/2022-07-29-an-R-package-for-calculating-scores-and-marks-for-combined-events/index.html#using-marks",
+    "href": "posts/2022-07-29-an-R-package-for-calculating-scores-and-marks-for-combined-events/index.html#using-marks",
+    "title": "combinedevents: an R package for calculating scores and marks for combined events in track and field",
+    "section": "Using marks()",
+    "text": "Using marks()\nThe marks() function calculates marks for track and field combined events competitions. This function performs the opposite action of scores(): you give it the scores you want to obtain, and it gives you the marks you need to achieve those scores. To see its usefulness, let’s first consider the performance of heptathlon champion Katarina Johnson-Thompson at the 2019 World Athletics Championships:\n\n(hep_example <- scores(\n  marks = c(`100mH` = 13.09, HJ = 1.95, SP = 13.86,\n            `200m` = 23.08, LJ = 6.77, JT = 43.93, `800m` = \"2:07.26\"),\n  gender = \"female\", \n  combined_event = \"heptathlon\"\n  ))\n\n  heptathlon    mark score\n1      100mH   13.09  1111\n2         HJ    1.95  1171\n3         SP   13.86   785\n4       200m   23.08  1071\n5         LJ    6.77  1095\n6         JT   43.93   743\n7       800m 2:07.26  1005\n8      TOTAL    <NA>  6981\n\n\nThe vector of scores for the events comprising the heptathlon can be easily extracted from the object hep_example.\n\n(hep_scores <- hep_example$scores)\n\n100mH    HJ    SP  200m    LJ    JT  800m \n 1111  1171   785  1071  1095   743  1005 \n\n\nNow, let’s see the values of the marks returned when we supply hep_scores to marks().\n\nmarks(scores = hep_scores, gender = \"female\", combined_event = \"heptathlon\")\n\n  heptathlon    mark score\n1      100mH   13.09  1111\n2         HJ    1.95  1171\n3         SP   13.86   785\n4       200m   23.08  1071\n5         LJ    6.77  1095\n6         JT   43.92   743\n7       800m 2:07.30  1005\n8      TOTAL    <NA>  6981\n\n\nNotice that the marks for the first five events are the same as those in hep_example but are different for JT and 800m. In particular, the mark returned for JT is 1cm shorter than her actual mark and for 800m is 40 milliseconds (or 0.04 of a second) slower than her actual mark. This is a result of how the marks() function was written: for track events, the function returns the slowest time needed to achieve the input score. Similarly, for jumping and throwing events, marks() returns the shortest distance necessary to achieve the input score.\n\n\n\n\n\nFigure 2: Katarina Johnson-Thompson at the 2019 World Athletics Championships."
+  },
+  {
+    "objectID": "posts/2022-07-29-an-R-package-for-calculating-scores-and-marks-for-combined-events/index.html#final-thoughts",
+    "href": "posts/2022-07-29-an-R-package-for-calculating-scores-and-marks-for-combined-events/index.html#final-thoughts",
+    "title": "combinedevents: an R package for calculating scores and marks for combined events in track and field",
+    "section": "Final thoughts",
+    "text": "Final thoughts\nI hope this post provided a solid introduction to both combinedevents, the package, and combined events, the competitions. For more information on the package, I recommend checking out its documentation (i.e., run help(package = \"combinedevents\")). Lastly, while I briefly touched on how combined events are scored, I’d like to take a more in-depth look at this topic in a future post. Thanks for reading!"
   }
 ]
