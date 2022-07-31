@@ -120,14 +120,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="Katie Frank - combinedevents: an R package for calculating scores and marks for combined events in track and field">
 <meta property="og:description" content="Introduction to the R package and the competitions">
+<meta property="og:image" content="https://Katie-Frank.github.io/katie-frank.github.io/posts/2022-07-29-an-R-package-for-calculating-scores-and-marks-for-combined-events/outdoor_t&amp;f.jpg">
 <meta property="og:site-name" content="Katie Frank">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -164,7 +166,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">combinedevents: an R package for calculating scores and marks for combined events in track and field</h1>
@@ -173,7 +175,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <p>Introduction to the R package and the competitions</p>
         </div>
       </div>
-                </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">track and field</div>
+                <div class="quarto-category">combined events</div>
+              </div>
+                  </div>
   </div>
     
   
@@ -198,8 +205,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-are-combined-events" id="toc-what-are-combined-events" class="nav-link active" data-scroll-target="#what-are-combined-events">What are combined events?</a>
+  <ul class="collapse">
+  <li><a href="#outdoor-combined-events" id="toc-outdoor-combined-events" class="nav-link" data-scroll-target="#outdoor-combined-events">Outdoor combined events</a></li>
+  <li><a href="#indoor-combined-events" id="toc-indoor-combined-events" class="nav-link" data-scroll-target="#indoor-combined-events">Indoor combined events</a></li>
+  </ul></li>
+  <li><a href="#how-are-combined-events-scored" id="toc-how-are-combined-events-scored" class="nav-link" data-scroll-target="#how-are-combined-events-scored">How are combined events scored?</a></li>
+  <li><a href="#introduction-to-the-package" id="toc-introduction-to-the-package" class="nav-link" data-scroll-target="#introduction-to-the-package">Introduction to the package</a>
+  <ul class="collapse">
+  <li><a href="#using-scores" id="toc-using-scores" class="nav-link" data-scroll-target="#using-scores">Using <code>scores()</code></a></li>
+  <li><a href="#using-marks" id="toc-using-marks" class="nav-link" data-scroll-target="#using-marks">Using <code>marks()</code></a></li>
+  </ul></li>
+  <li><a href="#final-thoughts" id="toc-final-thoughts" class="nav-link" data-scroll-target="#final-thoughts">Final thoughts</a></li>
+  </ul>
+</nav>
+</nav>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -220,12 +248,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="zqvsgpnogg" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="qtxamapkqj" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#zqvsgpnogg .gt_table {
+#qtxamapkqj .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -250,7 +278,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#zqvsgpnogg .gt_heading {
+#qtxamapkqj .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -262,7 +290,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#zqvsgpnogg .gt_title {
+#qtxamapkqj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -274,7 +302,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-width: 0;
 }
 
-#zqvsgpnogg .gt_subtitle {
+#qtxamapkqj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -286,13 +314,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-width: 0;
 }
 
-#zqvsgpnogg .gt_bottom_border {
+#qtxamapkqj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zqvsgpnogg .gt_col_headings {
+#qtxamapkqj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -307,7 +335,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#zqvsgpnogg .gt_col_heading {
+#qtxamapkqj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -327,7 +355,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#zqvsgpnogg .gt_column_spanner_outer {
+#qtxamapkqj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -339,15 +367,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#zqvsgpnogg .gt_column_spanner_outer:first-child {
+#qtxamapkqj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zqvsgpnogg .gt_column_spanner_outer:last-child {
+#qtxamapkqj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zqvsgpnogg .gt_column_spanner {
+#qtxamapkqj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -359,7 +387,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   width: 100%;
 }
 
-#zqvsgpnogg .gt_group_heading {
+#qtxamapkqj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -384,7 +412,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#zqvsgpnogg .gt_empty_group_heading {
+#qtxamapkqj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -399,15 +427,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#zqvsgpnogg .gt_from_md > :first-child {
+#qtxamapkqj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zqvsgpnogg .gt_from_md > :last-child {
+#qtxamapkqj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zqvsgpnogg .gt_row {
+#qtxamapkqj .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -426,7 +454,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#zqvsgpnogg .gt_stub {
+#qtxamapkqj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -439,7 +467,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#zqvsgpnogg .gt_stub_row_group {
+#qtxamapkqj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -453,11 +481,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: top;
 }
 
-#zqvsgpnogg .gt_row_group_first td {
+#qtxamapkqj .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#zqvsgpnogg .gt_summary_row {
+#qtxamapkqj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -467,16 +495,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#zqvsgpnogg .gt_first_summary_row {
+#qtxamapkqj .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#zqvsgpnogg .gt_first_summary_row.thick {
+#qtxamapkqj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#zqvsgpnogg .gt_last_summary_row {
+#qtxamapkqj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -486,7 +514,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#zqvsgpnogg .gt_grand_summary_row {
+#qtxamapkqj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -496,7 +524,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#zqvsgpnogg .gt_first_grand_summary_row {
+#qtxamapkqj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -506,11 +534,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#zqvsgpnogg .gt_striped {
+#qtxamapkqj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zqvsgpnogg .gt_table_body {
+#qtxamapkqj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -519,7 +547,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#zqvsgpnogg .gt_footnotes {
+#qtxamapkqj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -533,7 +561,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#zqvsgpnogg .gt_footnote {
+#qtxamapkqj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -542,7 +570,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#zqvsgpnogg .gt_sourcenotes {
+#qtxamapkqj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -556,7 +584,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#zqvsgpnogg .gt_sourcenote {
+#qtxamapkqj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -564,36 +592,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#zqvsgpnogg .gt_left {
+#qtxamapkqj .gt_left {
   text-align: left;
 }
 
-#zqvsgpnogg .gt_center {
+#qtxamapkqj .gt_center {
   text-align: center;
 }
 
-#zqvsgpnogg .gt_right {
+#qtxamapkqj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zqvsgpnogg .gt_font_normal {
+#qtxamapkqj .gt_font_normal {
   font-weight: normal;
 }
 
-#zqvsgpnogg .gt_font_bold {
+#qtxamapkqj .gt_font_bold {
   font-weight: bold;
 }
 
-#zqvsgpnogg .gt_font_italic {
+#qtxamapkqj .gt_font_italic {
   font-style: italic;
 }
 
-#zqvsgpnogg .gt_super {
+#qtxamapkqj .gt_super {
   font-size: 65%;
 }
 
-#zqvsgpnogg .gt_two_val_uncert {
+#qtxamapkqj .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -602,31 +630,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   margin-left: 0.1em;
 }
 
-#zqvsgpnogg .gt_footnote_marks {
+#qtxamapkqj .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#zqvsgpnogg .gt_asterisk {
+#qtxamapkqj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#zqvsgpnogg .gt_slash_mark {
+#qtxamapkqj .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#zqvsgpnogg .gt_fraction_numerator {
+#qtxamapkqj .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#zqvsgpnogg .gt_fraction_denominator {
+#qtxamapkqj .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -674,12 +702,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="tckkqqdskp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="epafwcvwmb" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#tckkqqdskp .gt_table {
+#epafwcvwmb .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -704,7 +732,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#tckkqqdskp .gt_heading {
+#epafwcvwmb .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -716,7 +744,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#tckkqqdskp .gt_title {
+#epafwcvwmb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -728,7 +756,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-width: 0;
 }
 
-#tckkqqdskp .gt_subtitle {
+#epafwcvwmb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -740,13 +768,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-width: 0;
 }
 
-#tckkqqdskp .gt_bottom_border {
+#epafwcvwmb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#tckkqqdskp .gt_col_headings {
+#epafwcvwmb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -761,7 +789,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#tckkqqdskp .gt_col_heading {
+#epafwcvwmb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -781,7 +809,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#tckkqqdskp .gt_column_spanner_outer {
+#epafwcvwmb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -793,15 +821,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#tckkqqdskp .gt_column_spanner_outer:first-child {
+#epafwcvwmb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#tckkqqdskp .gt_column_spanner_outer:last-child {
+#epafwcvwmb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#tckkqqdskp .gt_column_spanner {
+#epafwcvwmb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -813,7 +841,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   width: 100%;
 }
 
-#tckkqqdskp .gt_group_heading {
+#epafwcvwmb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -838,7 +866,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#tckkqqdskp .gt_empty_group_heading {
+#epafwcvwmb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -853,15 +881,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#tckkqqdskp .gt_from_md > :first-child {
+#epafwcvwmb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#tckkqqdskp .gt_from_md > :last-child {
+#epafwcvwmb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#tckkqqdskp .gt_row {
+#epafwcvwmb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -880,7 +908,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#tckkqqdskp .gt_stub {
+#epafwcvwmb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -893,7 +921,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#tckkqqdskp .gt_stub_row_group {
+#epafwcvwmb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -907,11 +935,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: top;
 }
 
-#tckkqqdskp .gt_row_group_first td {
+#epafwcvwmb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#tckkqqdskp .gt_summary_row {
+#epafwcvwmb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -921,16 +949,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#tckkqqdskp .gt_first_summary_row {
+#epafwcvwmb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#tckkqqdskp .gt_first_summary_row.thick {
+#epafwcvwmb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#tckkqqdskp .gt_last_summary_row {
+#epafwcvwmb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -940,7 +968,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#tckkqqdskp .gt_grand_summary_row {
+#epafwcvwmb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -950,7 +978,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#tckkqqdskp .gt_first_grand_summary_row {
+#epafwcvwmb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -960,11 +988,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#tckkqqdskp .gt_striped {
+#epafwcvwmb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#tckkqqdskp .gt_table_body {
+#epafwcvwmb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -973,7 +1001,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#tckkqqdskp .gt_footnotes {
+#epafwcvwmb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -987,7 +1015,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#tckkqqdskp .gt_footnote {
+#epafwcvwmb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -996,7 +1024,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#tckkqqdskp .gt_sourcenotes {
+#epafwcvwmb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1010,7 +1038,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#tckkqqdskp .gt_sourcenote {
+#epafwcvwmb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1018,36 +1046,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#tckkqqdskp .gt_left {
+#epafwcvwmb .gt_left {
   text-align: left;
 }
 
-#tckkqqdskp .gt_center {
+#epafwcvwmb .gt_center {
   text-align: center;
 }
 
-#tckkqqdskp .gt_right {
+#epafwcvwmb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#tckkqqdskp .gt_font_normal {
+#epafwcvwmb .gt_font_normal {
   font-weight: normal;
 }
 
-#tckkqqdskp .gt_font_bold {
+#epafwcvwmb .gt_font_bold {
   font-weight: bold;
 }
 
-#tckkqqdskp .gt_font_italic {
+#epafwcvwmb .gt_font_italic {
   font-style: italic;
 }
 
-#tckkqqdskp .gt_super {
+#epafwcvwmb .gt_super {
   font-size: 65%;
 }
 
-#tckkqqdskp .gt_two_val_uncert {
+#epafwcvwmb .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -1056,31 +1084,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   margin-left: 0.1em;
 }
 
-#tckkqqdskp .gt_footnote_marks {
+#epafwcvwmb .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#tckkqqdskp .gt_asterisk {
+#epafwcvwmb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#tckkqqdskp .gt_slash_mark {
+#epafwcvwmb .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#tckkqqdskp .gt_fraction_numerator {
+#epafwcvwmb .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#tckkqqdskp .gt_fraction_denominator {
+#epafwcvwmb .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -1129,12 +1157,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="spmkblondd" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="rdndzeyuch" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#spmkblondd .gt_table {
+#rdndzeyuch .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1159,7 +1187,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#spmkblondd .gt_heading {
+#rdndzeyuch .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -1171,7 +1199,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#spmkblondd .gt_title {
+#rdndzeyuch .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1183,7 +1211,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-width: 0;
 }
 
-#spmkblondd .gt_subtitle {
+#rdndzeyuch .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1195,13 +1223,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-width: 0;
 }
 
-#spmkblondd .gt_bottom_border {
+#rdndzeyuch .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#spmkblondd .gt_col_headings {
+#rdndzeyuch .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1216,7 +1244,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#spmkblondd .gt_col_heading {
+#rdndzeyuch .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1236,7 +1264,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#spmkblondd .gt_column_spanner_outer {
+#rdndzeyuch .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1248,15 +1276,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#spmkblondd .gt_column_spanner_outer:first-child {
+#rdndzeyuch .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#spmkblondd .gt_column_spanner_outer:last-child {
+#rdndzeyuch .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#spmkblondd .gt_column_spanner {
+#rdndzeyuch .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1268,7 +1296,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   width: 100%;
 }
 
-#spmkblondd .gt_group_heading {
+#rdndzeyuch .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1293,7 +1321,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#spmkblondd .gt_empty_group_heading {
+#rdndzeyuch .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1308,15 +1336,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#spmkblondd .gt_from_md > :first-child {
+#rdndzeyuch .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#spmkblondd .gt_from_md > :last-child {
+#rdndzeyuch .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#spmkblondd .gt_row {
+#rdndzeyuch .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1335,7 +1363,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#spmkblondd .gt_stub {
+#rdndzeyuch .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1348,7 +1376,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#spmkblondd .gt_stub_row_group {
+#rdndzeyuch .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1362,11 +1390,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: top;
 }
 
-#spmkblondd .gt_row_group_first td {
+#rdndzeyuch .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#spmkblondd .gt_summary_row {
+#rdndzeyuch .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1376,16 +1404,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#spmkblondd .gt_first_summary_row {
+#rdndzeyuch .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#spmkblondd .gt_first_summary_row.thick {
+#rdndzeyuch .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#spmkblondd .gt_last_summary_row {
+#rdndzeyuch .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1395,7 +1423,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#spmkblondd .gt_grand_summary_row {
+#rdndzeyuch .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1405,7 +1433,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#spmkblondd .gt_first_grand_summary_row {
+#rdndzeyuch .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1415,11 +1443,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#spmkblondd .gt_striped {
+#rdndzeyuch .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#spmkblondd .gt_table_body {
+#rdndzeyuch .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1428,7 +1456,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#spmkblondd .gt_footnotes {
+#rdndzeyuch .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1442,7 +1470,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#spmkblondd .gt_footnote {
+#rdndzeyuch .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1451,7 +1479,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#spmkblondd .gt_sourcenotes {
+#rdndzeyuch .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1465,7 +1493,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#spmkblondd .gt_sourcenote {
+#rdndzeyuch .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1473,36 +1501,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#spmkblondd .gt_left {
+#rdndzeyuch .gt_left {
   text-align: left;
 }
 
-#spmkblondd .gt_center {
+#rdndzeyuch .gt_center {
   text-align: center;
 }
 
-#spmkblondd .gt_right {
+#rdndzeyuch .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#spmkblondd .gt_font_normal {
+#rdndzeyuch .gt_font_normal {
   font-weight: normal;
 }
 
-#spmkblondd .gt_font_bold {
+#rdndzeyuch .gt_font_bold {
   font-weight: bold;
 }
 
-#spmkblondd .gt_font_italic {
+#rdndzeyuch .gt_font_italic {
   font-style: italic;
 }
 
-#spmkblondd .gt_super {
+#rdndzeyuch .gt_super {
   font-size: 65%;
 }
 
-#spmkblondd .gt_two_val_uncert {
+#rdndzeyuch .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -1511,31 +1539,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   margin-left: 0.1em;
 }
 
-#spmkblondd .gt_footnote_marks {
+#rdndzeyuch .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#spmkblondd .gt_asterisk {
+#rdndzeyuch .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#spmkblondd .gt_slash_mark {
+#rdndzeyuch .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#spmkblondd .gt_fraction_numerator {
+#rdndzeyuch .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#spmkblondd .gt_fraction_denominator {
+#rdndzeyuch .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -1581,12 +1609,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="frhxpalwmn" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="jsklwwticy" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#frhxpalwmn .gt_table {
+#jsklwwticy .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1611,7 +1639,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#frhxpalwmn .gt_heading {
+#jsklwwticy .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -1623,7 +1651,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#frhxpalwmn .gt_title {
+#jsklwwticy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1635,7 +1663,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-width: 0;
 }
 
-#frhxpalwmn .gt_subtitle {
+#jsklwwticy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1647,13 +1675,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-width: 0;
 }
 
-#frhxpalwmn .gt_bottom_border {
+#jsklwwticy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#frhxpalwmn .gt_col_headings {
+#jsklwwticy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1668,7 +1696,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#frhxpalwmn .gt_col_heading {
+#jsklwwticy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1688,7 +1716,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#frhxpalwmn .gt_column_spanner_outer {
+#jsklwwticy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1700,15 +1728,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#frhxpalwmn .gt_column_spanner_outer:first-child {
+#jsklwwticy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#frhxpalwmn .gt_column_spanner_outer:last-child {
+#jsklwwticy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#frhxpalwmn .gt_column_spanner {
+#jsklwwticy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1720,7 +1748,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   width: 100%;
 }
 
-#frhxpalwmn .gt_group_heading {
+#jsklwwticy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1745,7 +1773,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#frhxpalwmn .gt_empty_group_heading {
+#jsklwwticy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1760,15 +1788,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#frhxpalwmn .gt_from_md > :first-child {
+#jsklwwticy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#frhxpalwmn .gt_from_md > :last-child {
+#jsklwwticy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#frhxpalwmn .gt_row {
+#jsklwwticy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1787,7 +1815,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#frhxpalwmn .gt_stub {
+#jsklwwticy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1800,7 +1828,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#frhxpalwmn .gt_stub_row_group {
+#jsklwwticy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1814,11 +1842,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: top;
 }
 
-#frhxpalwmn .gt_row_group_first td {
+#jsklwwticy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#frhxpalwmn .gt_summary_row {
+#jsklwwticy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1828,16 +1856,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#frhxpalwmn .gt_first_summary_row {
+#jsklwwticy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#frhxpalwmn .gt_first_summary_row.thick {
+#jsklwwticy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#frhxpalwmn .gt_last_summary_row {
+#jsklwwticy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1847,7 +1875,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#frhxpalwmn .gt_grand_summary_row {
+#jsklwwticy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1857,7 +1885,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#frhxpalwmn .gt_first_grand_summary_row {
+#jsklwwticy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1867,11 +1895,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#frhxpalwmn .gt_striped {
+#jsklwwticy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#frhxpalwmn .gt_table_body {
+#jsklwwticy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1880,7 +1908,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#frhxpalwmn .gt_footnotes {
+#jsklwwticy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1894,7 +1922,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#frhxpalwmn .gt_footnote {
+#jsklwwticy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1903,7 +1931,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#frhxpalwmn .gt_sourcenotes {
+#jsklwwticy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1917,7 +1945,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#frhxpalwmn .gt_sourcenote {
+#jsklwwticy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1925,36 +1953,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#frhxpalwmn .gt_left {
+#jsklwwticy .gt_left {
   text-align: left;
 }
 
-#frhxpalwmn .gt_center {
+#jsklwwticy .gt_center {
   text-align: center;
 }
 
-#frhxpalwmn .gt_right {
+#jsklwwticy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#frhxpalwmn .gt_font_normal {
+#jsklwwticy .gt_font_normal {
   font-weight: normal;
 }
 
-#frhxpalwmn .gt_font_bold {
+#jsklwwticy .gt_font_bold {
   font-weight: bold;
 }
 
-#frhxpalwmn .gt_font_italic {
+#jsklwwticy .gt_font_italic {
   font-style: italic;
 }
 
-#frhxpalwmn .gt_super {
+#jsklwwticy .gt_super {
   font-size: 65%;
 }
 
-#frhxpalwmn .gt_two_val_uncert {
+#jsklwwticy .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -1963,31 +1991,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   margin-left: 0.1em;
 }
 
-#frhxpalwmn .gt_footnote_marks {
+#jsklwwticy .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#frhxpalwmn .gt_asterisk {
+#jsklwwticy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#frhxpalwmn .gt_slash_mark {
+#jsklwwticy .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#frhxpalwmn .gt_fraction_numerator {
+#jsklwwticy .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#frhxpalwmn .gt_fraction_denominator {
+#jsklwwticy .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -2045,7 +2073,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The two main functions in <code>combinedevents</code> are <code>scores()</code> and <code>marks()</code>. The package also includes the data frame <code>dec</code>, which contains the performances of 23 decathletes at the 2016 Summer Olympics.</p>
 <section id="using-scores" class="level3">
 <h3 class="anchored" data-anchor-id="using-scores">Using <code>scores()</code></h3>
-<p>The <code>scores()</code> function calculates scores for combined events competitions. As an example, let’s calculate the points for decathlon champion Ashton Eaton at the <a href="https://en.wikipedia.org/wiki/Athletics_at_the_2016_Summer_Olympics_–_Men%27s_decathlon">2016 Summer Olympics</a>.</p>
+<p>The <code>scores()</code> function calculates scores for combined events competitions. As an example, let’s calculate the points for decathlon champion Ashton Eaton at the <a href="https://en.wikipedia.org/wiki/Athletics_at_the_2016_Summer_Olympics_–_Men%27s_decathlon">2016 Summer Olympics</a>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scores</span>(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">marks =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">100m</span><span class="st">`</span> <span class="ot">=</span> <span class="fl">10.46</span>, <span class="at">LJ =</span> <span class="fl">7.94</span>, <span class="at">SP =</span> <span class="fl">14.73</span>, <span class="at">HJ =</span> <span class="fl">2.01</span>, </span>
@@ -2079,21 +2107,127 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">combined_event =</span> <span class="st">"decathlon"</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><br></p>
 <center>
-<p><a id="74KRftYNQ2J7P9KIB3dqgw" class="gie-single" href="http://www.gettyimages.com/detail/591467078" target="_blank" style="color:#a7a7a7;text-decoration:none;font-weight:normal !important;border:none;display:inline-block;">Embed from Getty Images</a></p><a id="74KRftYNQ2J7P9KIB3dqgw" class="gie-single" href="http://www.gettyimages.com/detail/591467078" target="_blank" style="color:#a7a7a7;text-decoration:none;font-weight:normal !important;border:none;display:inline-block;">
-</a><p><a id="74KRftYNQ2J7P9KIB3dqgw" class="gie-single" href="http://www.gettyimages.com/detail/591467078" target="_blank" style="color:#a7a7a7;text-decoration:none;font-weight:normal !important;border:none;display:inline-block;"></a></p>
-<script>window.gie=window.gie||function(c){(gie.q=gie.q||[]).push(c)};gie(function(){gie.widgets.load({id:'74KRftYNQ2J7P9KlB3dqgw',sig:'ub_2FiHMUragBlc39D_F2chDiSx465lGwra8rNkJXyU=',w:'594px',h:'396px',items:'591467078',caption: true ,tld:'com',is360: false })});</script>
-<script src="//embed-cdn.gettyimages.com/widgets.js" charset="utf-8" async=""></script>
-
-Ashton Eaton long jumping at the 2016 Summer Olympics.
-
+<div id="fig-ashton_eaton_rio2016" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TAVI2WA5Gn0">
+</iframe>
+<p></p><figcaption class="figure-caption">Figure 1: Ashton Eaton at the 2016 Summer Olympics.</figcaption><p></p>
+</figure>
+</div>
 </center>
-<p><br></p>
-<p>Going to add the rest soon…</p>
-
-
+<p>Another features of <code>scores()</code> is that it allows you to calculate the points for as many individual events as you want without having to specify a particular combined event.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scores</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">marks =</span> <span class="fu">c</span>(<span class="at">LJ =</span> <span class="dv">7</span>, <span class="at">LJ =</span> <span class="fl">7.01</span>, <span class="at">LJ =</span> <span class="fl">7.02</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">`</span><span class="at">400m</span><span class="st">`</span> <span class="ot">=</span> <span class="dv">50</span>, <span class="st">`</span><span class="at">400m</span><span class="st">`</span> <span class="ot">=</span> <span class="fl">49.5</span>, <span class="st">`</span><span class="at">400m</span><span class="st">`</span> <span class="ot">=</span> <span class="dv">49</span>),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">gender =</span> <span class="st">"male"</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  event  mark score
+1    LJ  7.00   814
+2    LJ  7.01   816
+3    LJ  7.02   818
+4  400m 50.00   815
+5  400m 49.50   838
+6  400m 49.00   861</code></pre>
+</div>
+</div>
 </section>
+<section id="using-marks" class="level3">
+<h3 class="anchored" data-anchor-id="using-marks">Using <code>marks()</code></h3>
+<p>The <code>marks()</code> function calculates marks for track and field combined events competitions. This function performs the opposite action of <code>scores()</code>: you give it the scores you want to obtain, and it gives you the marks you need to achieve those scores. To see its usefulness, let’s first consider the performance of heptathlon champion Katarina Johnson-Thompson at the <a href="https://en.wikipedia.org/wiki/2019_World_Athletics_Championships_–_Women%27s_heptathlon">2019 World Athletics Championships</a>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(hep_example <span class="ot">&lt;-</span> <span class="fu">scores</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">marks =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">100mH</span><span class="st">`</span> <span class="ot">=</span> <span class="fl">13.09</span>, <span class="at">HJ =</span> <span class="fl">1.95</span>, <span class="at">SP =</span> <span class="fl">13.86</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">`</span><span class="at">200m</span><span class="st">`</span> <span class="ot">=</span> <span class="fl">23.08</span>, <span class="at">LJ =</span> <span class="fl">6.77</span>, <span class="at">JT =</span> <span class="fl">43.93</span>, <span class="st">`</span><span class="at">800m</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"2:07.26"</span>),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">gender =</span> <span class="st">"female"</span>, </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">combined_event =</span> <span class="st">"heptathlon"</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  heptathlon    mark score
+1      100mH   13.09  1111
+2         HJ    1.95  1171
+3         SP   13.86   785
+4       200m   23.08  1071
+5         LJ    6.77  1095
+6         JT   43.93   743
+7       800m 2:07.26  1005
+8      TOTAL    &lt;NA&gt;  6981</code></pre>
+</div>
+</div>
+<p>The vector of scores for the events comprising the heptathlon can be easily extracted from the object <code>hep_example</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(hep_scores <span class="ot">&lt;-</span> hep_example<span class="sc">$</span>scores)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>100mH    HJ    SP  200m    LJ    JT  800m 
+ 1111  1171   785  1071  1095   743  1005 </code></pre>
+</div>
+</div>
+<p>Now, let’s see the values of the marks returned when we supply <code>hep_scores</code> to <code>marks()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">marks</span>(<span class="at">scores =</span> hep_scores, <span class="at">gender =</span> <span class="st">"female"</span>, <span class="at">combined_event =</span> <span class="st">"heptathlon"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  heptathlon    mark score
+1      100mH   13.09  1111
+2         HJ    1.95  1171
+3         SP   13.86   785
+4       200m   23.08  1071
+5         LJ    6.77  1095
+6         JT   43.92   743
+7       800m 2:07.30  1005
+8      TOTAL    &lt;NA&gt;  6981</code></pre>
+</div>
+</div>
+<p>Notice that the marks for the first five events are the same as those in <code>hep_example</code> but are different for <code>JT</code> and <code>800m</code>. In particular, the mark returned for <code>JT</code> is 1cm shorter than her actual mark and for <code>800m</code> is 40 milliseconds (or 0.04 of a second) slower than her actual mark. This is a result of how the <code>marks()</code> function was written: for track events, the function returns the slowest time needed to achieve the input score. Similarly, for jumping and throwing events, <code>marks()</code> returns the shortest distance necessary to achieve the input score.</p>
+<center>
+<div id="fig-kjt_doha2019" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0wHgZOERDbs">
+</iframe>
+<p></p><figcaption class="figure-caption">Figure 2: Katarina Johnson-Thompson at the 2019 World Athletics Championships.</figcaption><p></p>
+</figure>
+</div>
+</center>
+<section id="a-couple-of-asides-about-marks" class="level4">
+<h4 class="anchored" data-anchor-id="a-couple-of-asides-about-marks">A couple of asides about <code>marks()</code></h4>
+<p>While <code>marks()</code> acts as the natural opposite of <code>scores()</code>, the function is <strong>NOT</strong> the inverse of <code>scores()</code> because, as we just saw, you can have two different marks mapped to the same score.</p>
+<p>For some events, when a score is given to <code>marks()</code>, the score returned may be different from the one input because some scores are not actually possible. This behavior stems from the fact that track and field measurements are only <em>so granular</em>- the finest units of measurement are milliseconds for track events and centimeters for jumping and throwing events. Thus, when an impossible score is given to <code>marks()</code>, the function will return the closest higher score that corresponds to a mark. To get a better idea of what I mean, let’s calculate the scores for two high jump marks: one of 2m (or about 6<span class="math inline">\(^{\prime}\)</span> 6.75<span class="math inline">\(^{\prime\prime}\)</span>) and the other 2.01m (roughly 6<span class="math inline">\(^{\prime}\)</span> 7<span class="math inline">\(^{\prime\prime}\)</span>).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scores</span>(<span class="fu">c</span>(<span class="at">HJ =</span> <span class="dv">2</span>, <span class="at">HJ =</span> <span class="fl">2.01</span>), <span class="st">"male"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  event mark score
+1    HJ 2.00   803
+2    HJ 2.01   813</code></pre>
+</div>
+</div>
+<p>From the output, we see that scores of <span class="math inline">\(\{804, 805, \dots, 812\}\)</span> are not possible for the men’s high jump event. So, when we give <code>marks()</code> those scores, only scores of 813 are returned.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>HJ_scores <span class="ot">&lt;-</span> <span class="dv">804</span><span class="sc">:</span><span class="dv">812</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(HJ_scores) <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"HJ"</span>, <span class="fu">length</span>(HJ_scores))</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">marks</span>(HJ_scores, <span class="st">"male"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  event mark score
+1    HJ 2.01   813
+2    HJ 2.01   813
+3    HJ 2.01   813
+4    HJ 2.01   813
+5    HJ 2.01   813
+6    HJ 2.01   813
+7    HJ 2.01   813
+8    HJ 2.01   813
+9    HJ 2.01   813</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="final-thoughts" class="level2">
+<h2 class="anchored" data-anchor-id="final-thoughts">Final thoughts</h2>
+<p>I hope this post provided a solid introduction to both <code>combinedevents</code>, the package, and <em>combined events</em>, the competitions. For more information on the package, I recommend checking out its documentation (i.e., run <code>help(package = "combinedevents")</code>). Lastly, while I briefly touched on how combined events are scored, I’d like to take a more in-depth look at this topic in a future post. Thanks for reading!</p>
+
+
 </section>
 
 

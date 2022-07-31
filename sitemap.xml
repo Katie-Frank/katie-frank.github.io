@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://Katie-Frank.github.io/katie-frank.github.io/posts/post-with-code/index.html</loc>
-    <lastmod>2022-07-30T02:30:44.495Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Katie-Frank.github.io/katie-frank.github.io/posts/welcome/index.html</loc>
-    <lastmod>2022-07-30T02:30:44.839Z</lastmod>
-  </url>
-  <url>
     <loc>https://Katie-Frank.github.io/katie-frank.github.io/posts/2022-07-29-an-R-package-for-calculating-scores-and-marks-for-combined-events/index.html</loc>
-    <lastmod>2022-07-30T02:30:45.813Z</lastmod>
+    <lastmod>2022-07-31T16:22:50.038Z</lastmod>
   </url>
   <url>
     <loc>https://Katie-Frank.github.io/katie-frank.github.io/index.html</loc>
-    <lastmod>2022-07-30T02:30:46.221Z</lastmod>
+    <lastmod>2022-07-31T16:22:50.401Z</lastmod>
   </url>
   <url>
     <loc>https://Katie-Frank.github.io/katie-frank.github.io/about.html</loc>
-    <lastmod>2022-07-30T02:30:46.536Z</lastmod>
+    <lastmod>2022-07-31T16:22:50.745Z</lastmod>
   </url>
 </urlset>
