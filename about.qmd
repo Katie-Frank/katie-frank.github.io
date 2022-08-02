@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: ""
 image: profile.jpg
 about:
   template: trestles
